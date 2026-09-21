@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/data/resume";
 
-export const alt = `${profile.name} — ${profile.role}`;
+export const alt = `${profile.name} — ${profile.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -25,12 +25,12 @@ export default function OpenGraphImage() {
           <div style={{ width: 12, height: 12, borderRadius: 999, background: "#22d3ee" }} />
           Available for new opportunities
         </div>
-        <div style={{ fontSize: 88, fontWeight: 700, marginTop: 28, letterSpacing: -2 }}>
+        <div style={{ fontSize: 84, fontWeight: 700, marginTop: 24, letterSpacing: -2 }}>
           {profile.name}
         </div>
         <div
           style={{
-            fontSize: 56,
+            fontSize: 48,
             fontWeight: 700,
             marginTop: 4,
             letterSpacing: -1,
@@ -41,7 +41,15 @@ export default function OpenGraphImage() {
         >
           {profile.role}
         </div>
-        <div style={{ fontSize: 28, color: "#8a93a6", marginTop: 32 }}>{profile.tagline}</div>
+        <div style={{ fontSize: 36, fontWeight: 600, marginTop: 4, color: "#e7ebf3" }}>
+          AI Automation &amp; AI Agents
+        </div>
+        <div style={{ fontSize: 24, color: "#8a93a6", marginTop: 28, lineHeight: 1.4 }}>
+          SaaS & CRM applications · AI agents · Voice automation · Python workflows
+        </div>
+        <div style={{ fontSize: 22, color: "#8a93a6", marginTop: 10 }}>
+          React · Next.js · TypeScript · Node.js · Python · PostgreSQL
+        </div>
       </div>
     ),
     size

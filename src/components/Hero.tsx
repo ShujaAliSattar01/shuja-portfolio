@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowDown, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Download, Mail, MapPin } from "lucide-react";
 import { profile } from "@/data/resume";
 import { buildMailto } from "@/lib/mailto";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -45,7 +45,13 @@ export default function Hero() {
             className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
           >
             Hi, I&apos;m {profile.name.split(" ")[0]}{" "}
-            <span className="block gradient-text">{profile.role}.</span>
+            <span className="block gradient-text">{profile.role}</span>
+            <span className="block text-[0.6em] font-semibold text-foreground/90 mt-2">
+              <span className="text-muted mr-3" aria-hidden="true">
+                |
+              </span>
+              AI Automation &amp; AI Agents
+            </span>
           </motion.h1>
 
           <motion.p
@@ -54,8 +60,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 max-w-2xl text-base sm:text-lg text-muted"
           >
-            {profile.tagline}. I build and ship production SaaS features end-to-end —
-            from responsive React interfaces to permission-aware APIs and real-time systems.
+            {profile.tagline}
           </motion.p>
 
           <motion.div
@@ -68,14 +73,24 @@ export default function Hero() {
               href="#projects"
               className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-background hover:opacity-90 transition-opacity glow"
             >
-              View my work
+              View Projects
             </a>
             <a
               href="#contact"
               className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-accent/50 hover:text-accent transition-colors"
             >
-              Get in touch
+              Contact Me
             </a>
+            {profile.cvUrl && (
+              <a
+                href={profile.cvUrl}
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-accent/50 hover:text-accent transition-colors"
+              >
+                <Download size={16} aria-hidden="true" />
+                Download CV
+              </a>
+            )}
           </motion.div>
 
           <motion.div
@@ -130,7 +145,7 @@ export default function Hero() {
               src="/mypic.png"
               alt={profile.name}
               fill
-              priority
+              preload
               sizes="(min-width: 1024px) 380px, 0px"
               className="object-cover object-top"
             />

@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, ShieldCheck, Radio, Wrench } from "lucide-react";
+import { Layers, ShieldCheck, Radio, Bot } from "lucide-react";
 import { profile } from "@/data/resume";
 import SectionHeading from "./SectionHeading";
 
 const highlights = [
   {
     icon: Layers,
-    title: "Full-Stack SaaS",
+    title: "Full-Stack SaaS & CRM",
     detail: "Dashboards, forms, calendars, Kanban views, and multi-step business workflows.",
   },
   {
@@ -17,14 +17,14 @@ const highlights = [
     detail: "Multi-tenancy, RBAC, and permission-aware workflows across product portals.",
   },
   {
-    icon: Radio,
-    title: "Real-Time Systems",
-    detail: "WebRTC & Socket.IO — reconnection, ICE restart, and re-offer handling.",
+    icon: Bot,
+    title: "AI Agents & Automation",
+    detail: "LLM-driven agents, voice/speech-to-text, browser & desktop automation, and scraping in Python.",
   },
   {
-    icon: Wrench,
-    title: "Production Debugging",
-    detail: "Tracing issues across UI, API, and data layers to root cause and fix.",
+    icon: Radio,
+    title: "Real-Time & Debugging",
+    detail: "WebRTC & Socket.IO features, plus tracing production issues across UI, API, and data layers.",
   },
 ];
 
@@ -35,15 +35,17 @@ export default function About() {
         <SectionHeading eyebrow="01 · About" title="A bit about me" />
 
         <div className="grid md:grid-cols-5 gap-12">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-2 text-muted leading-relaxed"
+            className="md:col-span-2 space-y-4 text-muted leading-relaxed"
           >
-            {profile.summary}
-          </motion.p>
+            {profile.summary.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </motion.div>
 
           <div className="md:col-span-3 grid sm:grid-cols-2 gap-5">
             {highlights.map((item, i) => (

@@ -71,8 +71,9 @@ export default function Contact() {
             className="md:col-span-2 space-y-4"
           >
             <p className="text-muted leading-relaxed mb-6">
-              I&apos;m open to full-stack engineering roles and freelance SaaS work.
-              Reach out and I&apos;ll get back to you as soon as I can.
+              I&apos;m open to Full-Stack, Frontend, and AI automation / agent engineering roles,
+              as well as freelance SaaS and automation work. Reach out and I&apos;ll get back to
+              you as soon as I can.
             </p>
 
             <a href={buildMailto(profile.email, "Portfolio Inquiry")} className={infoCardClass}>

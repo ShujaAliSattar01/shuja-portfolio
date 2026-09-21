@@ -37,6 +37,27 @@ function ProjectLinks({ project }: { project: Project }) {
   );
 }
 
+function CategoryTags({ tags, featured }: { tags?: string[]; featured?: boolean }) {
+  if (!featured && (!tags || tags.length === 0)) return null;
+  return (
+    <ul className="mb-3 flex flex-wrap gap-1.5" aria-label="Categories">
+      {featured && (
+        <li className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
+          Featured
+        </li>
+      )}
+      {tags?.map((tag) => (
+        <li
+          key={tag}
+          className="inline-flex items-center rounded-full border border-accent-2/30 bg-accent-2/10 px-2.5 py-0.5 text-[11px] font-medium text-accent-2"
+        >
+          {tag}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function StackTags({ stack }: { stack: string[] }) {
   if (stack.length === 0) return null;
   return (
@@ -87,9 +108,7 @@ export default function Projects() {
             <Thumbnail project={featured} sizes="(min-width: 1024px) 60vw, 100vw" />
           </div>
           <div className="lg:col-span-2 flex flex-col p-6 sm:p-8">
-            <span className="mb-3 inline-flex w-fit items-center rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
-              Featured
-            </span>
+            <CategoryTags tags={featured.tags} featured />
             <h3 className="text-2xl font-semibold tracking-tight">{featured.name}</h3>
             <p className="text-xs font-mono text-accent mb-4">{featured.subtitle}</p>
             <p className="text-sm text-muted leading-relaxed mb-6 flex-1">{featured.description}</p>
@@ -112,6 +131,7 @@ export default function Projects() {
                 <Thumbnail project={project} sizes="(min-width: 640px) 50vw, 100vw" />
               </div>
               <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <CategoryTags tags={project.tags} />
                 <h3 className="text-lg font-semibold tracking-tight">{project.name}</h3>
                 <p className="text-xs font-mono text-accent mb-3">{project.subtitle}</p>
                 <p className="text-sm text-muted leading-relaxed mb-5 flex-1">{project.description}</p>

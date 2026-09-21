@@ -49,7 +49,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="mt-10 grid sm:grid-cols-3 gap-5"
+          className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {additionalExposure.map((item) => (
             <div

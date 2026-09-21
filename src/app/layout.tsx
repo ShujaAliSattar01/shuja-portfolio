@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
-import { profile, skillGroups } from "@/data/resume";
+import { profile, seo, skillGroups } from "@/data/resume";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,14 +17,14 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const title = `${profile.name} | ${profile.role}`;
-const description = `Portfolio of ${profile.name}, a ${profile.role} specializing in ${profile.tagline.replaceAll(" • ", ", ")}.`;
+const title = seo.title;
+const description = seo.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
-  keywords: [profile.name, profile.role, ...skillGroups.flatMap((g) => g.skills)],
+  keywords: [profile.name, ...seo.keywords],
   authors: [{ name: profile.name, url: profile.github }],
   creator: profile.name,
   openGraph: {
@@ -53,6 +53,7 @@ const jsonLd = {
   "@type": "Person",
   name: profile.name,
   jobTitle: profile.role,
+  description: seo.description,
   email: `mailto:${profile.email}`,
   telephone: profile.phone,
   url: siteUrl,
